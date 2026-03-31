@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enterprise-tecnologia.com.br/sitemap.xml
