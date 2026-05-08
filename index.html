@@ -34,8 +34,44 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Enterprise Tecnologia e Serviços",
+    "description": "Soluções em controle de acesso, ponto eletrônico, catracas eletrônicas e automação de portões em Teresina/PI.",
+    "image": "images/logo.png",
+    "telephone": "+55-86-99911-1011",
+    "email": "enterprice.ts@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Gabriel Ferreira, 1798, Sala 2",
+      "addressLocality": "Teresina",
+      "addressRegion": "PI",
+      "addressCountry": "BR"
+    },
+    "openingHours": ["Mo-Fr 08:00-12:00", "Mo-Fr 14:00-18:00"],
+    "foundingDate": "2010",
+    "areaServed": ["Teresina", "Piauí", "Maranhão"],
+    "sameAs": []
+  }
+  </script>
 </head>
-<body>
+<body class="loading">
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <img src="images/logo.png" alt="Enterprise" class="preloader-logo">
+      <div class="preloader-bar"><span></span></div>
+      <p class="preloader-text">Carregando...</p>
+    </div>
+  </div>
+
+  <!-- SCROLL PROGRESS -->
+  <div id="scrollProgress"></div>
 
   <!-- HEADER -->
   <header id="header">
@@ -46,10 +82,11 @@
       <nav id="navMenu" aria-label="Menu principal">
         <ul>
           <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#produtos">Produtos</a></li>
           <li><a href="#mercados">Mercados</a></li>
-          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contato" class="btn-nav">Contato</a></li>
         </ul>
       </nav>
@@ -62,32 +99,37 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-overlay"></div>
+    <canvas id="hero-particles"></canvas>
+    <div class="hero-scan-line"></div>
     <div class="hero-content">
-      <div class="hero-badge">Desde 2010 no mercado</div>
-      <h1>Enterprise Tecnologia e Serviços</h1>
-      <h2>Controle de acesso e jornada de trabalho simples, seguro e automatizado para a sua empresa</h2>
-      <p>Catracas eletrônicas, relógios de ponto, automação de portões e muito mais — com instalação, suporte e peças originais.</p>
-      <div class="hero-btns">
-        <a href="https://wa.me/5586999111011" class="btn-primary" target="_blank" rel="noopener">
+      <div class="hero-logo-wrap animate-fade-down">
+        <img src="images/logo.png" alt="Logo Enterprise Tecnologia e Serviços" class="hero-logo">
+      </div>
+      <div class="hero-badge animate-fade-up" style="animation-delay:.15s">Desde 2010 no mercado</div>
+      <h1 class="animate-fade-up" style="animation-delay:.28s">Enterprise Tecnologia e Serviços</h1>
+      <h2 class="animate-fade-up" style="animation-delay:.42s">Controle de acesso e jornada de trabalho simples, seguro e automatizado para a sua empresa</h2>
+      <p class="animate-fade-up" style="animation-delay:.55s">Catracas eletrônicas, relógios de ponto, automação de portões e muito mais — com instalação, suporte e peças originais.</p>
+      <div class="hero-btns animate-fade-up" style="animation-delay:.68s">
+        <a href="https://wa.me/5586999111011" class="btn-primary ripple" target="_blank" rel="noopener">
           <i class="fab fa-whatsapp"></i> Falar no WhatsApp
         </a>
-        <a href="#servicos" class="btn-outline">
+        <a href="#servicos" class="btn-outline ripple">
           <i class="fas fa-chevron-right"></i> Ver serviços
         </a>
       </div>
-      <div class="hero-stats">
+      <div class="hero-stats animate-fade-up" style="animation-delay:.82s">
         <div class="stat">
-          <span class="stat-num">+15</span>
+          <span class="stat-num" data-target="15" data-prefix="+">0</span>
           <span class="stat-label">Anos de mercado</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num">+100</span>
+          <span class="stat-num" data-target="100" data-prefix="+">0</span>
           <span class="stat-label">Clientes atendidos</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num">2</span>
+          <span class="stat-num" data-target="2">0</span>
           <span class="stat-label">Estados de atuação</span>
         </div>
       </div>
@@ -103,21 +145,21 @@
       <p class="section-sub">Fundada em 2010, a Enterprise nasceu para modernizar a forma como as organizações gerenciam o fluxo de pessoas e o registro de jornada.</p>
 
       <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item" data-reveal="left">
           <div class="tl-icon"><i class="fas fa-rocket"></i></div>
           <div class="tl-content">
             <h3>O início e a consolidação (2010–2015)</h3>
             <p>Focamos na excelência técnica e no atendimento consultivo. Tornamo-nos referência para condomínios, indústrias e o comércio local, garantindo conformidade com as leis trabalhistas.</p>
           </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-reveal="left" data-delay="150">
           <div class="tl-icon"><i class="fas fa-expand-arrows-alt"></i></div>
           <div class="tl-content">
             <h3>Expansão e inovação (2016–2020)</h3>
             <p>Expandimos para o Leste do Maranhão e fomos pioneiros na introdução de biometria e reconhecimento facial, substituindo métodos antigos por soluções invioláveis e de alta performance.</p>
           </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" data-reveal="left" data-delay="300">
           <div class="tl-icon"><i class="fas fa-globe"></i></div>
           <div class="tl-content">
             <h3>Liderança e futuro (2021–Presente)</h3>
@@ -127,17 +169,17 @@
       </div>
 
       <div class="mv-grid">
-        <div class="mv-card">
+        <div class="mv-card" data-reveal="up" data-delay="0">
           <div class="mv-icon"><i class="fas fa-eye"></i></div>
           <h3>Visão</h3>
           <p>Transformar a gestão de acesso e jornada de trabalho em um processo simples, seguro e automatizado, com o melhor custo-benefício do mercado.</p>
         </div>
-        <div class="mv-card">
+        <div class="mv-card" data-reveal="up" data-delay="120">
           <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
           <h3>Missão</h3>
           <p>Entregar e instalar sistemas de controle de ponto e acesso com excelência técnica, unindo equipamentos de qualidade a um suporte próximo.</p>
         </div>
-        <div class="mv-card">
+        <div class="mv-card" data-reveal="up" data-delay="240">
           <div class="mv-icon"><i class="fas fa-gem"></i></div>
           <h3>Valores</h3>
           <ul>
@@ -151,29 +193,76 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
-  <section id="servicos" class="section-dark">
+  <!-- DIFERENCIAIS -->
+  <section id="diferenciais" class="section-dark">
     <div class="container">
-      <div class="section-tag light">O que fazemos</div>
-      <h2 class="section-title light">Nossos serviços</h2>
-      <p class="section-sub light">Do fornecimento à instalação — cuidamos de tudo para que sua empresa nunca pare.</p>
+      <div class="section-tag light">Por que nos escolher</div>
+      <h2 class="section-title light">Nossos diferenciais</h2>
+      <p class="section-sub light">Mais do que equipamentos — entregamos tranquilidade, segurança e eficiência para o seu negócio.</p>
+      <div class="diferenciais-grid">
+        <div class="diferencial-card" data-reveal="up" data-delay="0">
+          <div class="dif-number">01</div>
+          <div class="dif-icon"><i class="fas fa-medal"></i></div>
+          <h3>+15 anos de experiência</h3>
+          <p>Uma das empresas com maior presença regional no segmento de controle de acesso e ponto eletrônico.</p>
+        </div>
+        <div class="diferencial-card" data-reveal="up" data-delay="100">
+          <div class="dif-number">02</div>
+          <div class="dif-icon"><i class="fas fa-headset"></i></div>
+          <h3>Suporte técnico ágil</h3>
+          <p>Atendimento rápido para que sua empresa nunca pare. Nossa equipe resolve com agilidade qualquer ocorrência.</p>
+        </div>
+        <div class="diferencial-card" data-reveal="up" data-delay="200">
+          <div class="dif-number">03</div>
+          <div class="dif-icon"><i class="fas fa-fingerprint"></i></div>
+          <h3>Tecnologia de ponta</h3>
+          <p>Biometria, reconhecimento facial e sistemas em nuvem — sempre à frente com o que há de mais moderno.</p>
+        </div>
+        <div class="diferencial-card" data-reveal="up" data-delay="300">
+          <div class="dif-number">04</div>
+          <div class="dif-icon"><i class="fas fa-certificate"></i></div>
+          <h3>Peças 100% originais</h3>
+          <p>Fornecemos somente peças originais com garantia assegurada e rastreabilidade completa dos fabricantes.</p>
+        </div>
+        <div class="diferencial-card" data-reveal="up" data-delay="400">
+          <div class="dif-number">05</div>
+          <div class="dif-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h3>Cobertura regional</h3>
+          <p>Atendemos Teresina, interior do Piauí e Leste do Maranhão com equipe técnica própria e deslocamento rápido.</p>
+        </div>
+        <div class="diferencial-card" data-reveal="up" data-delay="500">
+          <div class="dif-number">06</div>
+          <div class="dif-icon"><i class="fas fa-balance-scale"></i></div>
+          <h3>Conformidade legal</h3>
+          <p>Nossos sistemas garantem que sua empresa esteja sempre em conformidade com a legislação trabalhista vigente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-tag">O que fazemos</div>
+      <h2 class="section-title">Nossos serviços</h2>
+      <p class="section-sub">Do fornecimento à instalação — cuidamos de tudo para que sua empresa nunca pare.</p>
       <div class="servicos-grid">
-        <div class="servico-card">
+        <div class="servico-card" data-reveal="up" data-delay="0">
           <div class="servico-icon"><i class="fas fa-tools"></i></div>
           <h3>Instalação profissional</h3>
           <p>Instalamos todos os equipamentos com equipe técnica especializada, garantindo perfeito funcionamento desde o primeiro dia.</p>
         </div>
-        <div class="servico-card">
+        <div class="servico-card" data-reveal="up" data-delay="120">
           <div class="servico-icon"><i class="fas fa-shield-alt"></i></div>
           <h3>Manutenção preventiva</h3>
           <p>Realizamos revisões periódicas para evitar falhas e manter seus sistemas de acesso sempre operando com máxima eficiência.</p>
         </div>
-        <div class="servico-card">
+        <div class="servico-card" data-reveal="up" data-delay="240">
           <div class="servico-icon"><i class="fas fa-wrench"></i></div>
           <h3>Reparos técnicos</h3>
           <p>Atendemos com agilidade qualquer ocorrência, diagnosticando e solucionando problemas para que sua empresa não perca produtividade.</p>
         </div>
-        <div class="servico-card">
+        <div class="servico-card" data-reveal="up" data-delay="360">
           <div class="servico-icon"><i class="fas fa-box-open"></i></div>
           <h3>Peças originais com garantia</h3>
           <p>Fornecemos peças 100% originais dos fabricantes, com garantia assegurada e rastreabilidade completa.</p>
@@ -182,6 +271,24 @@
     </div>
   </section>
 
+  <!-- CTA BANNER -->
+  <div class="cta-banner" data-reveal="scale">
+    <div class="container">
+      <div class="cta-banner-inner">
+        <div class="cta-banner-text">
+          <i class="fas fa-shield-alt"></i>
+          <div>
+            <strong>Sua empresa ainda usa controle de ponto manual?</strong>
+            <span>Modernize agora — solicite um orçamento gratuito e sem compromisso.</span>
+          </div>
+        </div>
+        <a href="https://wa.me/5586999111011" class="btn-cta ripple" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Quero modernizar agora
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- PRODUTOS -->
   <section id="produtos">
     <div class="container">
@@ -189,32 +296,32 @@
       <h2 class="section-title">Nossos produtos</h2>
       <p class="section-sub">Equipamentos de alta qualidade para controle de acesso e gestão de jornada, prontos para atender sua realidade.</p>
       <div class="produtos-grid">
-        <div class="produto-card">
+        <div class="produto-card" data-reveal="scale" data-delay="0">
           <div class="produto-icon"><i class="fas fa-door-open"></i></div>
           <h3>Catracas eletrônicas</h3>
           <p>Controle preciso do fluxo de pessoas com catracas robustas e modernas, ideais para portarias, academias e condomínios.</p>
         </div>
-        <div class="produto-card">
+        <div class="produto-card" data-reveal="scale" data-delay="100">
           <div class="produto-icon"><i class="fas fa-clock"></i></div>
           <h3>Coletores de ponto</h3>
           <p>Relógios de ponto eletrônicos com biometria, cartão ou reconhecimento facial para registro preciso da jornada.</p>
         </div>
-        <div class="produto-card">
+        <div class="produto-card" data-reveal="scale" data-delay="200">
           <div class="produto-icon"><i class="fas fa-walking"></i></div>
           <h3>Bastão para ronda</h3>
           <p>Controle e registro de rondas de segurança com bastões eletrônicos, garantindo a integridade dos seus patrimônios.</p>
         </div>
-        <div class="produto-card">
+        <div class="produto-card" data-reveal="scale" data-delay="300">
           <div class="produto-icon"><i class="fas fa-car"></i></div>
           <h3>Automação de portão e cancelas</h3>
           <p>Sistemas automatizados para portões e cancelas veiculares, com controle remoto e integração com catraca ou RFID.</p>
         </div>
-        <div class="produto-card">
+        <div class="produto-card" data-reveal="scale" data-delay="400">
           <div class="produto-icon"><i class="fas fa-desktop"></i></div>
           <h3>Sistema de acesso desktop ou online</h3>
           <p>Software de controle de acesso instalado localmente ou 100% em nuvem, com gestão centralizada e relatórios em tempo real.</p>
         </div>
-        <div class="produto-card">
+        <div class="produto-card" data-reveal="scale" data-delay="500">
           <div class="produto-icon"><i class="fas fa-cloud"></i></div>
           <h3>Controle de ponto online</h3>
           <p>Gerencie a jornada de trabalho de qualquer lugar pelo navegador, com integração a folha de pagamento e conformidade legal.</p>
@@ -223,57 +330,64 @@
     </div>
   </section>
 
-  <!-- MERCADOS -->
-  <section id="mercados" class="section-dark">
+  <!-- PARCEIROS -->
+  <section id="parceiros" class="section-dark">
     <div class="container">
-      <div class="section-tag light">Onde atuamos</div>
-      <h2 class="section-title light">Mercados de atuação</h2>
-      <p class="section-sub light">Atendemos diversos segmentos com soluções sob medida para cada necessidade.</p>
-      <div class="mercados-grid">
-        <div class="mercado-item">
-          <i class="fas fa-industry"></i>
-          <span>Indústrias</span>
+      <div class="section-tag light">Marcas que trabalhamos</div>
+      <h2 class="section-title light">Parceiros e fabricantes</h2>
+      <p class="section-sub light">Trabalhamos com os principais fabricantes do mercado, garantindo qualidade, suporte e peças originais.</p>
+      <div class="parceiros-grid">
+        <div class="parceiro-card" data-reveal="up" data-delay="0">
+          <i class="fas fa-microchip"></i>
+          <span>Control iD</span>
         </div>
-        <div class="mercado-item">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Escolas</span>
+        <div class="parceiro-card" data-reveal="up" data-delay="80">
+          <i class="fas fa-microchip"></i>
+          <span>Henry</span>
         </div>
-        <div class="mercado-item">
-          <i class="fas fa-dumbbell"></i>
-          <span>Academias</span>
+        <div class="parceiro-card" data-reveal="up" data-delay="160">
+          <i class="fas fa-microchip"></i>
+          <span>Intelbras</span>
         </div>
-        <div class="mercado-item">
-          <i class="fas fa-utensils"></i>
-          <span>Restaurantes e refeitórios</span>
+        <div class="parceiro-card" data-reveal="up" data-delay="240">
+          <i class="fas fa-microchip"></i>
+          <span>ZKTeco</span>
         </div>
-        <div class="mercado-item">
-          <i class="fas fa-building"></i>
-          <span>Condomínios residenciais</span>
-        </div>
-        <div class="mercado-item">
-          <i class="fas fa-city"></i>
-          <span>Condomínios comerciais</span>
-        </div>
-        <div class="mercado-item">
-          <i class="fas fa-calendar-check"></i>
-          <span>Eventos</span>
-        </div>
-        <div class="mercado-item">
-          <i class="fas fa-store"></i>
-          <span>Comércio em geral</span>
+        <div class="parceiro-card" data-reveal="up" data-delay="320">
+          <i class="fas fa-microchip"></i>
+          <span>Hikvision</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DEPOIMENTOS -->
-  <section id="depoimentos">
+  <!-- MERCADOS -->
+  <section id="mercados">
     <div class="container">
-      <div class="section-tag">O que dizem sobre nós</div>
-      <h2 class="section-title">Depoimentos de clientes</h2>
-      <p class="section-sub">A confiança de centenas de parceiros que escolheram a Enterprise para proteger e automatizar suas operações.</p>
+      <div class="section-tag">Onde atuamos</div>
+      <h2 class="section-title">Mercados de atuação</h2>
+      <p class="section-sub">Atendemos diversos segmentos com soluções sob medida para cada necessidade.</p>
+      <div class="mercados-grid">
+        <div class="mercado-item" data-reveal="up" data-delay="0"><i class="fas fa-industry"></i><span>Indústrias</span></div>
+        <div class="mercado-item" data-reveal="up" data-delay="80"><i class="fas fa-graduation-cap"></i><span>Escolas</span></div>
+        <div class="mercado-item" data-reveal="up" data-delay="160"><i class="fas fa-dumbbell"></i><span>Academias</span></div>
+        <div class="mercado-item" data-reveal="up" data-delay="240"><i class="fas fa-utensils"></i><span>Restaurantes e refeitórios</span></div>
+        <div class="mercado-item" data-reveal="up" data-delay="320"><i class="fas fa-building"></i><span>Condomínios residenciais</span></div>
+        <div class="mercado-item" data-reveal="up" data-delay="400"><i class="fas fa-city"></i><span>Condomínios comerciais</span></div>
+        <div class="mercado-item" data-reveal="up" data-delay="480"><i class="fas fa-calendar-check"></i><span>Eventos</span></div>
+        <div class="mercado-item" data-reveal="up" data-delay="560"><i class="fas fa-store"></i><span>Comércio em geral</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="section-dark">
+    <div class="container">
+      <div class="section-tag light">O que dizem sobre nós</div>
+      <h2 class="section-title light">Depoimentos de clientes</h2>
+      <p class="section-sub light">A confiança de centenas de parceiros que escolheram a Enterprise para proteger e automatizar suas operações.</p>
       <div class="depoimentos-grid">
-        <div class="depoimento-card">
+        <div class="depoimento-card" data-reveal="up" data-delay="0">
           <div class="depoimento-stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
@@ -286,7 +400,7 @@
             </div>
           </div>
         </div>
-        <div class="depoimento-card">
+        <div class="depoimento-card" data-reveal="up" data-delay="150">
           <div class="depoimento-stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
@@ -299,7 +413,7 @@
             </div>
           </div>
         </div>
-        <div class="depoimento-card">
+        <div class="depoimento-card" data-reveal="up" data-delay="300">
           <div class="depoimento-stars">
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           </div>
@@ -316,6 +430,71 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-tag">Dúvidas frequentes</div>
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <p class="section-sub">Tire suas principais dúvidas sobre controle de acesso, ponto eletrônico e nossos serviços.</p>
+      <div class="faq-list">
+        <div class="faq-item" data-reveal="up" data-delay="0">
+          <button class="faq-question" aria-expanded="false">
+            <span>O que é controle de ponto eletrônico e por que minha empresa precisa?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>O controle de ponto eletrônico registra automaticamente a entrada e saída dos colaboradores, substituindo o ponto manual. É obrigatório para empresas com mais de 10 funcionários (Portaria 671/2021 do MTE) e elimina fraudes, garante conformidade legal e facilita o cálculo da folha de pagamento.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal="up" data-delay="80">
+          <button class="faq-question" aria-expanded="false">
+            <span>Qual a diferença entre controle de acesso e controle de ponto?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>O controle de acesso regula quem pode entrar e sair de determinados ambientes (catracas, portões, cancelas), enquanto o controle de ponto registra os horários de trabalho dos colaboradores. Os dois sistemas podem ser integrados, usando o mesmo equipamento e biometria para ambas as funções.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal="up" data-delay="160">
+          <button class="faq-question" aria-expanded="false">
+            <span>Os equipamentos funcionam sem internet?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sim. A maioria dos nossos equipamentos opera de forma autônoma, armazenando os registros localmente mesmo sem conexão. Quando a internet é restabelecida, os dados são sincronizados automaticamente com o sistema em nuvem ou software local.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal="up" data-delay="240">
+          <button class="faq-question" aria-expanded="false">
+            <span>Vocês oferecem suporte após a instalação?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sim, oferecemos suporte técnico ágil após a instalação, manutenção preventiva periódica e atendimento para reparos. Nosso objetivo é garantir que seus sistemas funcionem perfeitamente, sem deixar sua empresa parar.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal="up" data-delay="320">
+          <button class="faq-question" aria-expanded="false">
+            <span>Qual o prazo médio para instalação dos equipamentos?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>O prazo varia conforme o porte do projeto, mas a maioria das instalações simples é concluída em um único dia útil. Projetos maiores (múltiplas unidades, integração de sistemas) são planejados em conjunto com o cliente para minimizar a interferência na rotina da empresa.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal="up" data-delay="400">
+          <button class="faq-question" aria-expanded="false">
+            <span>O reconhecimento facial é seguro e preciso?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sim. Os sistemas de reconhecimento facial que trabalhamos utilizam algoritmos avançados com taxa de acerto superior a 99% e são resistentes a tentativas de fraude com fotos. Além disso, por não exigirem contato físico, são mais higiênicos que leitores de digitais.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTATO -->
   <section id="contato" class="section-dark">
     <div class="container">
@@ -323,7 +502,7 @@
       <h2 class="section-title light">Fale com a Enterprise</h2>
       <p class="section-sub light">Estamos prontos para apresentar a solução ideal para o seu negócio. Entre em contato e solicite um orçamento sem compromisso.</p>
       <div class="contato-grid">
-        <div class="contato-info">
+        <div class="contato-info" data-reveal="left">
           <div class="contato-item">
             <div class="contato-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div>
@@ -352,11 +531,11 @@
               <span>Segunda a sexta: 08h às 12h e 14h às 18h</span>
             </div>
           </div>
-          <a href="https://wa.me/5586999111011" class="btn-whatsapp-contato" target="_blank" rel="noopener">
+          <a href="https://wa.me/5586999111011" class="btn-whatsapp-contato ripple" target="_blank" rel="noopener">
             <i class="fab fa-whatsapp"></i> Solicitar orçamento pelo WhatsApp
           </a>
         </div>
-        <div class="contato-form-wrap">
+        <div class="contato-form-wrap" data-reveal="right">
           <form class="contato-form" id="contatoForm" novalidate>
             <div class="form-group">
               <label for="nome">Nome completo</label>
@@ -374,7 +553,7 @@
               <label for="mensagem">Mensagem</label>
               <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva sua necessidade..."></textarea>
             </div>
-            <button type="submit" class="btn-form">
+            <button type="submit" class="btn-form ripple">
               <i class="fas fa-paper-plane"></i> Enviar mensagem
             </button>
           </form>
@@ -396,10 +575,23 @@
     </div>
   </footer>
 
+  <!-- BOTÃO VOLTAR AO TOPO -->
+  <button id="backToTop" aria-label="Voltar ao topo">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
   <!-- WHATSAPP FLUTUANTE -->
   <a href="https://wa.me/5586999111011" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- AVISO LGPD -->
+  <div id="lgpdBanner" class="lgpd-banner" role="dialog" aria-label="Aviso de cookies">
+    <div class="lgpd-inner">
+      <p><i class="fas fa-cookie-bite"></i> Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de privacidade, em conformidade com a <strong>LGPD</strong>.</p>
+      <button id="lgpdAccept" class="lgpd-btn">Entendi</button>
+    </div>
+  </div>
 
   <!-- Rodapé MonteSite - Atualização Automática -->
   <div id="montesite-footer-badge"></div>
